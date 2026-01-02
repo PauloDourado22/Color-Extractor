@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color extractor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Color Extractor</h1>
+    <form method="POST" enctype="multipart/form-data">
+        <input type="file" name="image" required>
+        <button type="submit">Extract Color</button>
+    </form>
+    <div class="image-preview">
+        <img id="previewImage" alt="Image preview">
+    </div>
+    {% if colors %}
+        <div class="palette">
+            {% for color in colors %}
+                <div class="color-card">
+                    <div class="swatch" style="background: {{ color.hex }}"></div>
+                    <div class="info">
+                        <div>{{ color.hex }}</div>
+                        <div>{{ color.percent }}%</div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+<script>
+  const input = document.getElementById("imageInput");
+  const preview = document.getElementById("previewImage");
+
+  input.addEventListener("change", () => {
+    const file = input.files[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+
+    reader.onload = e => {
+      preview.src = e.target.result;
+      preview.style.display = "block";
+    };
+
+    reader.readAsDataURL(file);
+  });
+</script>
+</body>
+</html>
