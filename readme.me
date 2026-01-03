@@ -1,0 +1,92 @@
+Image Color Extractor
+
+A simple web app that allows users to upload an image and extracts the top 10 most dominant colors from it. Each color is displayed with a visual preview, HEX code, and percentage, inspired by tools like Flat UI Colors.
+
+This project combines basic image processing with NumPy and a Flask backend, along with a lightweight frontend.
+
+Features
+
+Upload an image from your computer
+
+Preview the image before submission
+
+Extract the 10 most common colors using K-Means clustering
+
+Display each color with:
+
+Color swatch
+
+HEX code
+
+Percentage occurrence
+
+Clean and simple UI with external CSS
+
+Tech Stack
+
+Python
+
+Flask
+
+NumPy
+
+scikit-learn (K-Means)
+
+Pillow (PIL)
+
+HTML / CSS
+
+JavaScript (for image preview)
+
+Project Structure
+project/
+│
+├── app.py
+├── templates/
+│   └── index.html
+├── static/
+│   ├── style.css
+│   └── uploads/
+└── README.md
+
+Installation and Setup
+
+Clone the repository:
+
+git clone <repo-url>
+cd <project-folder>
+
+
+Create and activate a virtual environment:
+
+python -m venv .venv
+source .venv/bin/activate  # macOS/Linux
+
+
+Install dependencies:
+
+pip install flask numpy pillow scikit-learn
+
+
+Run the application:
+
+python app.py
+
+
+Open your browser and go to:
+
+http://127.0.0.1:5000
+
+How It Works
+
+The user uploads an image through the browser
+
+JavaScript displays an image preview immediately
+
+Flask receives the image on form submission
+
+The image is resized and converted into a NumPy array
+
+K-Means clustering is used to find the 10 dominant colors
+
+The results are rendered as color cards on the page
